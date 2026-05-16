@@ -1,0 +1,25 @@
+.panel {
+  width: 100%;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+@media (max-width: 360px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

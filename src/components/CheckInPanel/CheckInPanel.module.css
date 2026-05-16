@@ -1,0 +1,76 @@
+.panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.streakRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.streakLabel {
+  font-size: 14px;
+  color: #8B7355;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+}
+
+.streakNum {
+  font-size: 20px;
+  font-weight: 800;
+  color: #F39C12;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  line-height: 1;
+}
+
+.streakHint {
+  font-size: 11px;
+  color: #6B5744;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  background: rgba(243,156,18,0.12);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.btn {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(67, 160, 133, 0.15);
+  color: #7DCEA0;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.08s;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  letter-spacing: 0.05em;
+  width: 100%;
+}
+
+.btn:hover:not(:disabled) {
+  background: rgba(67, 160, 133, 0.25);
+  border-color: #7DCEA0;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+  color: #888;
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.06);
+}
+
+.done {
+  font-size: 12px;
+  color: #6B5744;
+  text-align: center;
+  margin: 0;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+}

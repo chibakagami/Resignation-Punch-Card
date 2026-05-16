@@ -1,0 +1,80 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 0 8px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.appTitle {
+  font-size: 22px;
+  font-weight: 900;
+  color: #E8E0D5;
+  margin: 0;
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  letter-spacing: 0.06em;
+}
+
+.profile {
+  font-size: 12px;
+  color: #8B7355;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+}
+
+.setupBtn {
+  background: none;
+  border: none;
+  color: #8B7355;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+.setupBtn:hover { color: #C4B49A; }
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdownNum {
+  font-size: 24px;
+  font-weight: 900;
+  color: #F39C12;
+  line-height: 1;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+}
+
+.countdownLabel {
+  font-size: 10px;
+  color: #8B7355;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+}
+
+.settingsBtn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  transition: background 0.15s;
+}
+.settingsBtn:hover { background: rgba(255,255,255,0.12); }

@@ -1,0 +1,29 @@
+.btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(139,115,85,0.4);
+  background: rgba(139,115,85,0.1);
+  color: #C4B49A;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  transition: background 0.15s, transform 0.08s;
+  letter-spacing: 0.04em;
+}
+
+.btn:hover:not(:disabled) {
+  background: rgba(139,115,85,0.2);
+  border-color: #8B7355;
+  color: #E8E0D5;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}

@@ -1,0 +1,60 @@
+.btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  color: #E8E0D5;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: background 0.12s, border-color 0.12s, transform 0.08s;
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+
+.btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--event-color, #C0392B);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.93);
+  background: rgba(255,255,255,0.15);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.emoji {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #D4C5A9;
+  letter-spacing: 0.02em;
+}
+
+.count {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: var(--event-color, #C0392B);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 1px 6px;
+  line-height: 1.5;
+  font-family: monospace;
+}
