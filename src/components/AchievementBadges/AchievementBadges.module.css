@@ -1,0 +1,46 @@
+.section {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+}
+
+.count {
+  font-size: 12px;
+  color: #6B5744;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+}
+
+.scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139,115,85,0.3) transparent;
+}
+
+.scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: rgba(139,115,85,0.3);
+  border-radius: 999px;
+}

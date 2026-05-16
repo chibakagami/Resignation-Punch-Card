@@ -1,0 +1,52 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.center {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inkRing {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid rgba(192, 57, 43, 0.6);
+  pointer-events: none;
+}
+
+.stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 240, 232, 0.97);
+  border: 3px solid #C0392B;
+  border-radius: 12px;
+  padding: 20px 32px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35), 0 0 0 1px rgba(192,57,43,0.3);
+}
+
+.emoji {
+  font-size: 56px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #C0392B;
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  letter-spacing: 0.05em;
+}

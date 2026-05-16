@@ -1,0 +1,161 @@
+.card {
+  position: relative;
+  background: #F5F0E8;
+  border-radius: 16px;
+  border: 2px solid #8B7355;
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.35),
+    inset 0 0 0 1px rgba(139,115,85,0.2);
+  overflow: hidden;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(255,255,255,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(180,160,120,0.15) 0%, transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139,115,85,0.04) 2px,
+      rgba(139,115,85,0.04) 4px
+    );
+}
+
+.perfLeft,
+.perfRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  z-index: 1;
+}
+
+.perfLeft { left: 0; }
+.perfRight { right: 0; }
+
+.perfLeft::before,
+.perfRight::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 10px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 8px,
+    rgba(139,115,85,0.3) 8px,
+    rgba(139,115,85,0.3) 16px
+  );
+  margin: 0 auto;
+  border-left: 1px dashed rgba(139,115,85,0.25);
+  border-right: 1px dashed rgba(139,115,85,0.25);
+}
+
+.cardInner {
+  padding: 20px 28px 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #C4B49A;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: #2C1810;
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.cardSub {
+  font-size: 11px;
+  color: #6B5744;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.pageNum {
+  font-size: 11px;
+  color: #8B7355;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+}
+
+.stampCount {
+  font-size: 22px;
+  font-weight: 800;
+  color: #C0392B;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  line-height: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed #C4B49A;
+}
+
+.tagline {
+  font-size: 10px;
+  color: #8B7355;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.progress {
+  font-size: 12px;
+  color: #6B5744;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  font-weight: 600;
+}
+
+/* Export overrides */
+:global(.for-export) {
+  border-radius: 8px !important;
+  padding: 8px !important;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5) !important;
+}
+
+@media (max-width: 480px) {
+  .cardInner {
+    padding: 16px 20px 12px;
+  }
+  .grid {
+    gap: 8px;
+  }
+  .cardTitle {
+    font-size: 17px;
+  }
+}
