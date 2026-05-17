@@ -22,6 +22,7 @@ const initialState = {
   targetDate: null,
   stamps: [],
   eventCountMap: {},
+  customEvents: [],
   lastCheckIn: null,
   streak: 0,
   unlockedAchievements: [],
@@ -33,24 +34,22 @@ const usePunchCardStore = create(
     (set, get) => ({
       ...initialState,
 
-      addEventStamp(eventId) {
+      addEventStamp(eventId, date, note) {
         set(state => {
           const newStamp = {
             id: nanoid(),
             eventId,
             timestamp: new Date().toISOString(),
             type: 'event',
+            date: date || todayStr(),
+            note: note || '',
           }
           const newStamps = [...state.stamps, newStamp]
           const newEventCountMap = {
             ...state.eventCountMap,
             [eventId]: (state.eventCountMap[eventId] || 0) + 1,
           }
-          const nextState = {
-            ...state,
-            stamps: newStamps,
-            eventCountMap: newEventCountMap,
-          }
+          const nextState = { ...state, stamps: newStamps, eventCountMap: newEventCountMap }
           const newlyUnlocked = checkNewAchievements(nextState, state.unlockedAchievements)
           return {
             stamps: newStamps,
@@ -69,20 +68,16 @@ const usePunchCardStore = create(
         set(st => {
           const dayDiff = st.lastCheckIn ? daysBetween(today, st.lastCheckIn) : 999
           const newStreak = dayDiff === 1 ? st.streak + 1 : 1
-
           const newStamp = {
             id: nanoid(),
             eventId: 'daily_checkin',
             timestamp: new Date().toISOString(),
             type: 'checkin',
+            date: today,
+            note: '',
           }
           const newStamps = [...st.stamps, newStamp]
-          const nextState = {
-            ...st,
-            stamps: newStamps,
-            streak: newStreak,
-            lastCheckIn: today,
-          }
+          const nextState = { ...st, stamps: newStamps, streak: newStreak, lastCheckIn: today }
           const newlyUnlocked = checkNewAchievements(nextState, st.unlockedAchievements)
           return {
             stamps: newStamps,
@@ -94,14 +89,26 @@ const usePunchCardStore = create(
         })
       },
 
+      addCustomEvent(emoji, label) {
+        const id = `custom_${nanoid(6)}`
+        set(state => ({
+          customEvents: [...state.customEvents, { id, emoji, label, color: '#888888' }],
+        }))
+        return id
+      },
+
+      removeCustomEvent(id) {
+        set(state => ({
+          customEvents: state.customEvents.filter(e => e.id !== id),
+        }))
+      },
+
       updateProfile(companyName, jobTitle, targetDate) {
         set(state => {
           const nextState = { ...state, companyName, jobTitle, targetDate }
           const newlyUnlocked = checkNewAchievements(nextState, state.unlockedAchievements)
           return {
-            companyName,
-            jobTitle,
-            targetDate,
+            companyName, jobTitle, targetDate,
             unlockedAchievements: [...state.unlockedAchievements, ...newlyUnlocked],
             newlyUnlocked: [...state.newlyUnlocked, ...newlyUnlocked],
           }
@@ -127,38 +134,37 @@ const usePunchCardStore = create(
         })
       },
 
-      getSlotsOnCurrentCard() {
+      getTotalPages() {
         const { stamps } = get()
-        const count = stamps.length
-        const remainder = count % SLOTS_PER_CARD
-        return remainder === 0 && count > 0 ? SLOTS_PER_CARD : remainder
+        return Math.max(1, Math.ceil(stamps.length / SLOTS_PER_CARD))
       },
 
-      getCardPage() {
+      getStampsOnPage(page) {
         const { stamps } = get()
-        const count = stamps.length
-        if (count === 0) return 1
-        const remainder = count % SLOTS_PER_CARD
-        return remainder === 0 ? Math.floor(count / SLOTS_PER_CARD) : Math.floor(count / SLOTS_PER_CARD) + 1
+        const start = (page - 1) * SLOTS_PER_CARD
+        return stamps.slice(start, start + SLOTS_PER_CARD)
       },
 
-      getStampsOnCurrentCard() {
+      getCurrentPage() {
         const { stamps } = get()
-        const count = stamps.length
-        if (count === 0) return []
-        const remainder = count % SLOTS_PER_CARD
-        const sliceFrom = remainder === 0 ? count - SLOTS_PER_CARD : count - remainder
-        return stamps.slice(sliceFrom)
+        if (stamps.length === 0) return 1
+        return Math.ceil(stamps.length / SLOTS_PER_CARD)
       },
     }),
     {
       name: 'punch-card-v1',
-      version: 1,
+      version: 2,
       migrate: (persistedState, version) => {
-        if (version === 0) {
-          return { ...initialState, ...persistedState, eventCountMap: persistedState.eventCountMap || {} }
+        const base = { ...initialState, ...persistedState }
+        if (version < 2) {
+          base.customEvents = base.customEvents || []
+          base.stamps = (base.stamps || []).map(s => ({
+            ...s,
+            date: s.date || (s.timestamp ? s.timestamp.substring(0, 10) : todayStr()),
+            note: s.note || '',
+          }))
         }
-        return persistedState
+        return base
       },
     }
   )

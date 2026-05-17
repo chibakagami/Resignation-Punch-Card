@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import usePunchCardStore from './store/usePunchCardStore'
+import usePunchCardStore, { SLOTS_PER_CARD } from './store/usePunchCardStore'
 import { useStampAnimation } from './hooks/useStampAnimation'
 import { todayStr } from './utils/dateUtils'
 import AppHeader from './components/AppHeader/AppHeader'
@@ -8,6 +8,9 @@ import EventPanel from './components/EventPanel/EventPanel'
 import CheckInPanel from './components/CheckInPanel/CheckInPanel'
 import AchievementBadges from './components/AchievementBadges/AchievementBadges'
 import StampAnimation from './components/StampAnimation/StampAnimation'
+import StampInputModal from './components/StampInputModal/StampInputModal'
+import StampDetailModal from './components/StampDetailModal/StampDetailModal'
+import CustomEventModal from './components/CustomEventModal/CustomEventModal'
 import SettingsModal from './components/SettingsModal/SettingsModal'
 import ShareButton from './components/ShareButton/ShareButton'
 import styles from './App.module.css'
@@ -15,38 +18,63 @@ import styles from './App.module.css'
 export default function App() {
   const cardRef = useRef(null)
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const [stampInputEvent, setStampInputEvent] = useState(null)
+  const [detailStamp, setDetailStamp] = useState(null)
+  const [customEventOpen, setCustomEventOpen] = useState(false)
+  const [viewingPage, setViewingPage] = useState(1)
 
   const {
     companyName, jobTitle, targetDate,
-    stamps, eventCountMap,
+    stamps, eventCountMap, customEvents,
     lastCheckIn, streak,
     unlockedAchievements, newlyUnlocked,
     addEventStamp, addCheckIn,
+    addCustomEvent, removeCustomEvent,
     updateProfile, clearNewAchievements,
     resetAllData, checkStreakOnLoad,
-    getStampsOnCurrentCard, getCardPage,
+    getTotalPages, getStampsOnPage, getCurrentPage,
   } = usePunchCardStore()
 
   const { isPlaying, currentEvent, startAnimation, stopAnimation } = useStampAnimation()
 
   useEffect(() => {
     checkStreakOnLoad()
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, []) // eslint-disable-line
 
-  const handleStamp = useCallback((event) => {
+  // When stamps change, jump to the latest page
+  useEffect(() => {
+    const latest = getCurrentPage()
+    setViewingPage(latest)
+  }, [stamps.length]) // eslint-disable-line
+
+  const handleEventClick = useCallback((event) => {
     if (isPlaying) return
-    addEventStamp(event.id)
+    setStampInputEvent(event)
+  }, [isPlaying])
+
+  const handleStampConfirm = useCallback((event, date, note) => {
+    setStampInputEvent(null)
+    addEventStamp(event.id, date, note)
     startAnimation(event)
-  }, [isPlaying, addEventStamp, startAnimation])
+  }, [addEventStamp, startAnimation])
 
   const handleCheckIn = useCallback(() => {
     addCheckIn()
-    startAnimation({ emoji: '📅', label: '每日打卡' })
+    startAnimation({ emoji: '💾', label: '每日存檔' })
   }, [addCheckIn, startAnimation])
 
+  const handleSlotClick = useCallback((stamp) => {
+    setDetailStamp(stamp)
+  }, [])
+
+  const handleAddCustomEvent = useCallback((emoji, label) => {
+    addCustomEvent(emoji, label)
+    setCustomEventOpen(false)
+  }, [addCustomEvent])
+
+  const totalPages = getTotalPages()
+  const stampsOnPage = getStampsOnPage(viewingPage)
   const hasCheckedInToday = lastCheckIn === todayStr()
-  const stampsOnCard = getStampsOnCurrentCard()
-  const cardPage = getCardPage()
 
   return (
     <div className={styles.app}>
@@ -61,11 +89,16 @@ export default function App() {
 
         <PunchCard
           ref={cardRef}
-          stamps={stampsOnCard}
-          cardPage={cardPage}
+          stamps={stampsOnPage}
+          viewingPage={viewingPage}
+          totalPages={totalPages}
+          totalStamps={stamps.length}
           companyName={companyName}
           jobTitle={jobTitle}
-          totalStamps={stamps.length}
+          onPrevPage={() => setViewingPage(p => Math.max(1, p - 1))}
+          onNextPage={() => setViewingPage(p => Math.min(totalPages, p + 1))}
+          onSlotClick={handleSlotClick}
+          customEvents={customEvents}
         />
 
         <ShareButton cardRef={cardRef} />
@@ -79,7 +112,10 @@ export default function App() {
 
         <EventPanel
           eventCountMap={eventCountMap}
-          onStamp={handleStamp}
+          customEvents={customEvents}
+          onStamp={handleEventClick}
+          onAddCustom={() => setCustomEventOpen(true)}
+          onRemoveCustom={removeCustomEvent}
           disabled={isPlaying}
         />
 
@@ -94,6 +130,24 @@ export default function App() {
         isPlaying={isPlaying}
         currentEvent={currentEvent}
         onComplete={stopAnimation}
+      />
+
+      <StampInputModal
+        event={stampInputEvent}
+        onConfirm={handleStampConfirm}
+        onCancel={() => setStampInputEvent(null)}
+      />
+
+      <StampDetailModal
+        stamp={detailStamp}
+        customEvents={customEvents}
+        onClose={() => setDetailStamp(null)}
+      />
+
+      <CustomEventModal
+        isOpen={customEventOpen}
+        onSave={handleAddCustomEvent}
+        onCancel={() => setCustomEventOpen(false)}
       />
 
       <SettingsModal

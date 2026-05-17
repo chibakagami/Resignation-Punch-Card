@@ -8,21 +8,21 @@
 
 .titleBar {
   background: var(--poke-green);
-  padding: 6px 14px;
+  padding: 8px 14px;
 }
 
 .titleText {
   font-family: var(--font-pixel);
-  font-size: 7px;
+  font-size: 9px;
   color: #fff;
   letter-spacing: 0.08em;
 }
 
 .body {
-  padding: 10px 12px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .streakRow {
@@ -32,26 +32,24 @@
   flex-wrap: wrap;
 }
 
-.streakIcon {
-  font-size: 18px;
-}
+.streakIcon { font-size: 20px; }
 
 .streakInfo {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 
 .streakLabel {
   font-family: var(--font-pixel);
-  font-size: 6px;
+  font-size: 7px;
   color: var(--poke-text-muted);
   letter-spacing: 0.06em;
 }
 
 .streakNum {
   font-family: var(--font-pixel);
-  font-size: 14px;
+  font-size: 16px;
   color: var(--poke-green);
   line-height: 1;
   letter-spacing: 0.05em;
@@ -59,10 +57,10 @@
 
 .streakHint {
   font-family: var(--font-pixel);
-  font-size: 6px;
+  font-size: 7px;
   color: var(--poke-text-muted);
   background: rgba(0,160,80,0.1);
-  padding: 3px 8px;
+  padding: 4px 8px;
   border: 1px solid var(--poke-green);
   letter-spacing: 0.04em;
   margin-left: auto;
@@ -73,12 +71,12 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px;
+  padding: 14px;
   border: 3px solid var(--poke-border);
   background: var(--poke-panel);
   color: var(--poke-text);
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   cursor: pointer;
   transition: background 0.08s, transform 0.06s;
   box-shadow: 3px 3px 0 var(--poke-border);
@@ -86,15 +84,8 @@
   letter-spacing: 0.06em;
 }
 
-.btn:hover:not(:disabled) {
-  background: var(--poke-panel-blue);
-}
-
-.btn:active:not(:disabled) {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--poke-border);
-}
-
+.btn:hover:not(:disabled) { background: var(--poke-panel-blue); }
+.btn:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--poke-border); }
 .btn:disabled {
   opacity: 0.5;
   cursor: default;
@@ -103,7 +94,7 @@
 
 .done {
   font-family: var(--font-pixel);
-  font-size: 6px;
+  font-size: 7px;
   color: var(--poke-text-muted);
   text-align: center;
   margin: 0;
