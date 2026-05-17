@@ -10,7 +10,7 @@ const slotVariants = {
   },
 }
 
-export default function StampSlot({ stamp, index, isLatest }) {
+export default function StampSlot({ stamp, index, isLatest, onClick, customEvents }) {
   if (!stamp) {
     return (
       <div className={styles.slot} data-empty>
@@ -20,8 +20,10 @@ export default function StampSlot({ stamp, index, isLatest }) {
   }
 
   const event = stamp.type === 'checkin'
-    ? { emoji: '📅', label: '每日打卡' }
-    : (EVENT_MAP[stamp.eventId] || { emoji: '⭐', label: stamp.eventId })
+    ? { emoji: '📅', label: '每日存檔' }
+    : (EVENT_MAP[stamp.eventId]
+        || customEvents?.find(e => e.id === stamp.eventId)
+        || { emoji: '⭐', label: stamp.eventId })
 
   return (
     <motion.div
@@ -30,8 +32,11 @@ export default function StampSlot({ stamp, index, isLatest }) {
       variants={isLatest ? slotVariants : undefined}
       initial={isLatest ? 'hidden' : 'visible'}
       animate="visible"
+      onClick={() => onClick?.(stamp)}
+      title={stamp.note ? `${event.label}\n${stamp.date}\n${stamp.note}` : `${event.label} · ${stamp.date}`}
     >
       <span className={styles.stampEmoji}>{event.emoji}</span>
+      {stamp.note && <span className={styles.noteDot} />}
     </motion.div>
   )
 }

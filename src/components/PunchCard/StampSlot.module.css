@@ -7,31 +7,35 @@
   justify-content: center;
   position: relative;
   flex-shrink: 0;
-  transition: transform 0.1s;
+  transition: transform 0.12s;
 }
 
 .slot[data-empty] {
   background: radial-gradient(circle, #2a2c4a 0%, #1a1c2c 100%);
   border: 3px solid #404060;
-  box-shadow:
-    inset 0 2px 6px rgba(0,0,0,0.6),
-    0 1px 0 rgba(255,255,255,0.05);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.05);
 }
 
 .slot[data-filled] {
   background: radial-gradient(circle, rgba(248,208,48,0.15) 0%, rgba(26,96,216,0.08) 100%);
   border: 3px solid var(--poke-yellow);
-  box-shadow:
-    0 0 10px rgba(248,208,48,0.35),
-    0 0 3px rgba(248,208,48,0.5),
-    inset 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(248,208,48,0.35), 0 0 3px rgba(248,208,48,0.5), inset 0 1px 3px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.slot[data-filled]:hover {
+  transform: scale(1.12);
+  box-shadow: 0 0 16px rgba(248,208,48,0.55), 0 0 5px rgba(248,208,48,0.6);
+}
+
+.slot[data-filled]:active {
+  transform: scale(0.96);
 }
 
 .slotNumber {
   font-family: var(--font-pixel);
   font-size: 7px;
   color: #404060;
-  letter-spacing: 0;
 }
 
 .stampEmoji {
@@ -40,12 +44,18 @@
   filter: drop-shadow(0 0 3px rgba(248,208,48,0.5));
 }
 
+.noteDot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--poke-red);
+  border: 1px solid #fff;
+}
+
 @media (max-width: 400px) {
-  .slot {
-    width: 40px;
-    height: 40px;
-  }
-  .stampEmoji {
-    font-size: 20px;
-  }
+  .slot { width: 42px; height: 42px; }
+  .stampEmoji { font-size: 20px; }
 }

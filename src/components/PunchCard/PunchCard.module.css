@@ -10,7 +10,7 @@
 
 .topStripe {
   background: var(--poke-blue);
-  padding: 8px 14px;
+  padding: 10px 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +18,7 @@
 
 .cardTitle {
   font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 10px;
   color: #fff;
   letter-spacing: 0.06em;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
@@ -31,7 +31,7 @@
 
 .metaItem {
   font-family: var(--font-pixel);
-  font-size: 6px;
+  font-size: 9px;
   color: rgba(255,255,255,0.9);
   letter-spacing: 0.05em;
 }
@@ -57,20 +57,50 @@
   align-items: center;
   padding-top: 8px;
   border-top: 2px solid var(--poke-border);
+  gap: 8px;
+}
+
+.pageNav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pageBtn {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  background: var(--poke-panel);
+  border: 2px solid var(--poke-border);
+  color: var(--poke-text);
+  padding: 4px 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--poke-border);
+  transition: transform 0.06s;
+  line-height: 1;
+}
+.pageBtn:hover:not(:disabled) { background: var(--poke-panel-blue); }
+.pageBtn:active:not(:disabled) { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--poke-border); }
+.pageBtn:disabled { opacity: 0.3; cursor: default; box-shadow: none; }
+
+.pageIndicator {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--poke-text);
+  min-width: 44px;
+  text-align: center;
+  letter-spacing: 0.04em;
 }
 
 .tagline {
   font-family: var(--font-pixel);
-  font-size: 5px;
+  font-size: 6px;
   color: var(--poke-text-muted);
-  letter-spacing: 0.04em;
-}
-
-.progress {
-  font-family: var(--font-pixel);
-  font-size: 8px;
-  color: var(--poke-text);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
+  text-align: right;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* Export overrides */
@@ -80,10 +110,6 @@
 }
 
 @media (max-width: 400px) {
-  .cardInner {
-    padding: 10px;
-  }
-  .grid {
-    gap: 6px;
-  }
+  .cardInner { padding: 10px; }
+  .grid { gap: 6px; }
 }
