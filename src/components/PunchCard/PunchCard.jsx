@@ -36,7 +36,6 @@ const PunchCard = forwardRef(function PunchCard(
             />
           ))}
         </div>
-
         <div className={styles.footer}>
           <div className={styles.pageNav}>
             <button
