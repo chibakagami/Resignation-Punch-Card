@@ -1,0 +1,48 @@
+.section {
+  background: var(--poke-panel);
+  border: 4px solid var(--poke-border);
+  box-shadow: inset 0 0 0 2px var(--poke-panel), inset 0 0 0 4px var(--poke-border);
+  overflow: hidden;
+  width: 100%;
+}
+
+.titleBar {
+  background: var(--poke-yellow);
+  padding: 6px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--poke-text);
+  letter-spacing: 0.08em;
+}
+
+.count {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--poke-text);
+  letter-spacing: 0.05em;
+}
+
+.scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 10px 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--poke-border) transparent;
+}
+
+.scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--poke-border);
+}

@@ -1,0 +1,115 @@
+.card {
+  background: var(--poke-panel);
+  border: 4px solid var(--poke-border);
+  box-shadow: inset 0 0 0 2px var(--poke-panel), inset 0 0 0 4px var(--poke-border);
+  overflow: hidden;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.topStripe {
+  background: var(--poke-blue);
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardTitle {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: #fff;
+  letter-spacing: 0.06em;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+}
+
+.cardMeta {
+  display: flex;
+  gap: 12px;
+}
+
+.metaItem {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.05em;
+}
+
+.cardInner {
+  padding: 14px;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(26,96,216,0.06) 0%, transparent 50%),
+    var(--poke-panel);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  justify-items: center;
+  margin-bottom: 12px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 2px solid var(--poke-border);
+  gap: 8px;
+}
+
+.pageNav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pageBtn {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  background: var(--poke-panel);
+  border: 2px solid var(--poke-border);
+  color: var(--poke-text);
+  padding: 4px 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--poke-border);
+  transition: transform 0.06s;
+  line-height: 1;
+}
+.pageBtn:hover:not(:disabled) { background: var(--poke-panel-blue); }
+.pageBtn:active:not(:disabled) { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--poke-border); }
+.pageBtn:disabled { opacity: 0.3; cursor: default; box-shadow: none; }
+
+.pageIndicator {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--poke-text);
+  min-width: 44px;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.tagline {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--poke-text-muted);
+  letter-spacing: 0.03em;
+  text-align: right;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Export overrides */
+:global(.for-export) {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 400px) {
+  .cardInner { padding: 10px; }
+  .grid { gap: 6px; }
+}

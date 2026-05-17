@@ -1,0 +1,109 @@
+.header {
+  background: var(--poke-panel);
+  border: 4px solid var(--poke-border);
+  box-shadow: inset 0 0 0 2px var(--poke-panel), inset 0 0 0 4px var(--poke-border);
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.topBar {
+  background: var(--poke-red);
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appTitle {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: #fff;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+}
+
+.settingsBtn {
+  background: none;
+  border: 2px solid rgba(255,255,255,0.6);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.settingsBtn:hover { background: rgba(255,255,255,0.2); }
+
+.body {
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.trainerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trainerLabel {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--poke-text-muted);
+  letter-spacing: 0.08em;
+}
+
+.trainerName {
+  font-family: var(--font-zh);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--poke-text);
+  letter-spacing: 0.04em;
+}
+
+.setupBtn {
+  background: none;
+  border: none;
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--poke-blue);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  letter-spacing: 0.05em;
+}
+.setupBtn:hover { color: var(--poke-red); }
+
+.statsRow {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.statLabel {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--poke-text-muted);
+  letter-spacing: 0.06em;
+}
+
+.statNum {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--poke-red);
+  line-height: 1;
+}
+
+.countdown .statNum {
+  color: var(--poke-blue);
+}

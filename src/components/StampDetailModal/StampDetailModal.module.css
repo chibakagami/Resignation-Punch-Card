@@ -1,0 +1,135 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 28, 44, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal {
+  background: var(--poke-panel);
+  border: 4px solid var(--poke-border);
+  box-shadow: inset 0 0 0 2px var(--poke-panel), inset 0 0 0 4px var(--poke-border), 6px 6px 0 var(--poke-border);
+  width: 100%;
+  max-width: 360px;
+  overflow: hidden;
+}
+
+.titleBar {
+  background: var(--poke-yellow);
+  padding: 10px 14px;
+}
+
+.titleText {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--poke-text);
+  letter-spacing: 0.06em;
+}
+
+.body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.eventRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--poke-panel-blue);
+  border: 3px solid var(--poke-border);
+}
+
+.emoji {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.label {
+  font-family: var(--font-zh);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--poke-text);
+}
+
+.dateRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dateLabel {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--poke-text-muted);
+  letter-spacing: 0.06em;
+  min-width: 40px;
+}
+
+.dateValue {
+  font-family: var(--font-zh);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--poke-text);
+}
+
+.noteBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  background: #fffde8;
+  border: 3px solid var(--poke-yellow);
+}
+
+.noteLabel {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: #a08000;
+  letter-spacing: 0.06em;
+}
+
+.noteText {
+  margin: 0;
+  font-family: var(--font-zh);
+  font-size: 14px;
+  color: var(--poke-text);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.noNote {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--poke-text-muted);
+  text-align: center;
+  padding: 8px;
+  letter-spacing: 0.05em;
+}
+
+.footer {
+  padding: 0 16px 14px;
+}
+
+.closeBtn {
+  width: 100%;
+  padding: 11px;
+  border: 3px solid var(--poke-border);
+  background: var(--poke-panel);
+  color: var(--poke-text);
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--poke-border);
+  letter-spacing: 0.06em;
+  transition: transform 0.06s;
+}
+.closeBtn:hover { background: var(--poke-panel-blue); }
+.closeBtn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--poke-border); }
