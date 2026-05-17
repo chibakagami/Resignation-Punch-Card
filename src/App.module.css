@@ -1,22 +1,7 @@
 .app {
   min-height: 100dvh;
-  background-color: var(--poke-bg);
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 31px,
-      rgba(255, 255, 255, 0.025) 31px,
-      rgba(255, 255, 255, 0.025) 32px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 31px,
-      rgba(255, 255, 255, 0.025) 31px,
-      rgba(255, 255, 255, 0.025) 32px
-    );
-  padding: 16px 16px 48px;
+  background: #1A1A2E;
+  padding: 16px 16px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,5 +12,5 @@
   max-width: 480px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }

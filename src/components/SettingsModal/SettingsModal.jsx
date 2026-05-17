@@ -15,7 +15,10 @@ export default function SettingsModal({ isOpen, onClose, initialValues, onSave, 
   }
 
   function handleReset() {
-    if (!confirmReset) { setConfirmReset(true); return }
+    if (!confirmReset) {
+      setConfirmReset(true)
+      return
+    }
     onReset()
     onClose()
   }
@@ -37,14 +40,14 @@ export default function SettingsModal({ isOpen, onClose, initialValues, onSave, 
             exit={{ y: 40, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
           >
-            <div className={styles.titleBar}>
-              <h2 className={styles.title}>⚙ CONFIG</h2>
-              <button className={styles.closeBtn} onClick={onClose} type="button">✕ CLOSE</button>
+            <div className={styles.header}>
+              <h2 className={styles.title}>設定</h2>
+              <button className={styles.closeBtn} onClick={onClose} type="button">✕</button>
             </div>
 
             <form onSubmit={handleSave} className={styles.form}>
               <label className={styles.fieldLabel}>
-                COMPANY NAME
+                公司名稱
                 <input
                   className={styles.input}
                   type="text"
@@ -56,7 +59,7 @@ export default function SettingsModal({ isOpen, onClose, initialValues, onSave, 
               </label>
 
               <label className={styles.fieldLabel}>
-                JOB TITLE
+                職稱
                 <input
                   className={styles.input}
                   type="text"
@@ -68,7 +71,7 @@ export default function SettingsModal({ isOpen, onClose, initialValues, onSave, 
               </label>
 
               <label className={styles.fieldLabel}>
-                TARGET RESIGN DATE
+                目標離職日期
                 <input
                   className={styles.input}
                   type="date"
@@ -77,7 +80,7 @@ export default function SettingsModal({ isOpen, onClose, initialValues, onSave, 
                 />
               </label>
 
-              <button className={styles.saveBtn} type="submit">▶ SAVE &amp; EXIT</button>
+              <button className={styles.saveBtn} type="submit">儲存</button>
             </form>
 
             <div className={styles.danger}>
@@ -86,7 +89,7 @@ export default function SettingsModal({ isOpen, onClose, initialValues, onSave, 
                 onClick={handleReset}
                 type="button"
               >
-                {confirmReset ? '⚠ CONFIRM RESET?' : 'DELETE ALL DATA'}
+                {confirmReset ? '⚠️ 確定清除所有資料？' : '清除所有資料'}
               </button>
               {confirmReset && (
                 <button
@@ -94,7 +97,7 @@ export default function SettingsModal({ isOpen, onClose, initialValues, onSave, 
                   onClick={() => setConfirmReset(false)}
                   type="button"
                 >
-                  CANCEL
+                  取消
                 </button>
               )}
             </div>

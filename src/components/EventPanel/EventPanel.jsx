@@ -5,9 +5,7 @@ import styles from './EventPanel.module.css'
 export default function EventPanel({ eventCountMap, onStamp, disabled }) {
   return (
     <section className={styles.panel}>
-      <div className={styles.titleBar}>
-        <h2 className={styles.title}>▶ 選擇苦水技能！</h2>
-      </div>
+      <h2 className={styles.title}>今天又怎麼了？</h2>
       <div className={styles.grid}>
         {EVENTS.map(event => (
           <EventButton

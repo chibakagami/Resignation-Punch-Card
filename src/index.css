@@ -5,38 +5,19 @@
 html, body {
   margin: 0;
   padding: 0;
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-:root {
-  --poke-bg: #1a1c2c;
-  --poke-bg2: #16213e;
-  --poke-panel: #f8f8f8;
-  --poke-panel-blue: #e8f0ff;
-  --poke-border: #1a1c2c;
-  --poke-red: #c03028;
-  --poke-red-light: #e84038;
-  --poke-yellow: #f8d030;
-  --poke-blue: #1a60d8;
-  --poke-blue-light: #4890f0;
-  --poke-green: #00a050;
-  --poke-purple: #7038f8;
-  --poke-text: #1a1c2c;
-  --poke-text-muted: #484860;
-  --poke-text-light: #f8f8f8;
-  --font-pixel: 'Press Start 2P', monospace;
-  --font-zh: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+button {
+  font-family: inherit;
 }
 
-button { font-family: var(--font-zh); }
-input, textarea { font-family: var(--font-zh); }
-h1, h2, h3 { margin: 0; }
+input, textarea {
+  font-family: inherit;
+}
 
-/* Pokémon-style pixel box mixin */
-.poke-box {
-  background: var(--poke-panel);
-  border: 4px solid var(--poke-border);
-  box-shadow: inset 0 0 0 2px var(--poke-panel), inset 0 0 0 4px var(--poke-border);
-  padding: 14px;
+h1, h2, h3 {
+  margin: 0;
 }

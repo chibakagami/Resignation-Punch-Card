@@ -16,9 +16,9 @@ export default function AchievementBadges({ unlockedIds, newlyUnlocked, onClearN
 
   return (
     <section className={styles.section}>
-      <div className={styles.titleBar}>
-        <h2 className={styles.title}>★ 道館徽章</h2>
-        <span className={styles.count}>{unlockedCount}/{total}</span>
+      <div className={styles.header}>
+        <h2 className={styles.title}>成就</h2>
+        <span className={styles.count}>{unlockedCount} / {total}</span>
       </div>
       <div className={styles.scroll}>
         {ACHIEVEMENTS.map(a => (

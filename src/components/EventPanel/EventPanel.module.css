@@ -1,29 +1,21 @@
 .panel {
-  background: var(--poke-panel);
-  border: 4px solid var(--poke-border);
-  box-shadow: inset 0 0 0 2px var(--poke-panel), inset 0 0 0 4px var(--poke-border);
-  overflow: hidden;
   width: 100%;
 }
 
-.titleBar {
-  background: var(--poke-border);
-  padding: 6px 14px;
-}
-
 .title {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  color: #8B7355;
   letter-spacing: 0.08em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
-  padding: 8px;
-  gap: 6px;
+  gap: 8px;
 }
 
 @media (max-width: 360px) {

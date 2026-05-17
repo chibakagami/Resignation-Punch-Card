@@ -12,7 +12,7 @@ export default function ShareButton({ cardRef }) {
       type="button"
       data-html2canvas-ignore="true"
     >
-      {isCapturing ? '⏳ GENERATING...' : '📤 SHARE CARD'}
+      {isCapturing ? '⏳ 產生中…' : '📤 分享集點卡'}
     </button>
   )
 }
