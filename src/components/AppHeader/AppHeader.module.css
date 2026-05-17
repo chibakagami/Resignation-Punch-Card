@@ -1,80 +1,109 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  background: var(--poke-panel);
+  border: 4px solid var(--poke-border);
+  box-shadow: inset 0 0 0 2px var(--poke-panel), inset 0 0 0 4px var(--poke-border);
+  padding: 0;
+  overflow: hidden;
   width: 100%;
-  padding: 0 0 8px;
 }
 
-.left {
+.topBar {
+  background: var(--poke-red);
+  padding: 8px 14px;
   display: flex;
-  flex-direction: column;
-  gap: 3px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .appTitle {
-  font-size: 22px;
-  font-weight: 900;
-  color: #E8E0D5;
-  margin: 0;
-  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-  letter-spacing: 0.06em;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: #fff;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
 }
 
-.profile {
-  font-size: 12px;
-  color: #8B7355;
-  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+.settingsBtn {
+  background: none;
+  border: 2px solid rgba(255,255,255,0.6);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.settingsBtn:hover { background: rgba(255,255,255,0.2); }
+
+.body {
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.trainerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trainerLabel {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--poke-text-muted);
+  letter-spacing: 0.08em;
+}
+
+.trainerName {
+  font-family: var(--font-zh);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--poke-text);
+  letter-spacing: 0.04em;
 }
 
 .setupBtn {
   background: none;
   border: none;
-  color: #8B7355;
-  font-size: 12px;
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--poke-blue);
   cursor: pointer;
   padding: 0;
-  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
   text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.15s;
+  text-underline-offset: 3px;
+  letter-spacing: 0.05em;
 }
-.setupBtn:hover { color: #C4B49A; }
+.setupBtn:hover { color: var(--poke-red); }
 
-.right {
+.statsRow {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  gap: 16px;
+  align-items: flex-end;
 }
 
-.countdown {
+.statItem {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  gap: 2px;
 }
 
-.countdownNum {
-  font-size: 24px;
-  font-weight: 900;
-  color: #F39C12;
+.statLabel {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--poke-text-muted);
+  letter-spacing: 0.06em;
+}
+
+.statNum {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--poke-red);
   line-height: 1;
-  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
 }
 
-.countdownLabel {
-  font-size: 10px;
-  color: #8B7355;
-  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+.countdown .statNum {
+  color: var(--poke-blue);
 }
-
-.settingsBtn {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px;
-  padding: 6px 8px;
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 1;
-  transition: background 0.15s;
-}
-.settingsBtn:hover { background: rgba(255,255,255,0.12); }

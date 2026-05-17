@@ -1,37 +1,40 @@
 .section {
+  background: var(--poke-panel);
+  border: 4px solid var(--poke-border);
+  box-shadow: inset 0 0 0 2px var(--poke-panel), inset 0 0 0 4px var(--poke-border);
+  overflow: hidden;
   width: 100%;
 }
 
-.header {
+.titleBar {
+  background: var(--poke-yellow);
+  padding: 6px 14px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
 }
 
 .title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #8B7355;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--poke-text);
   letter-spacing: 0.08em;
-  margin: 0;
-  text-transform: uppercase;
-  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
 }
 
 .count {
-  font-size: 12px;
-  color: #6B5744;
-  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--poke-text);
+  letter-spacing: 0.05em;
 }
 
 .scroll {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   overflow-x: auto;
-  padding-bottom: 6px;
+  padding: 10px 12px;
   scrollbar-width: thin;
-  scrollbar-color: rgba(139,115,85,0.3) transparent;
+  scrollbar-color: var(--poke-border) transparent;
 }
 
 .scroll::-webkit-scrollbar {
@@ -41,6 +44,5 @@
   background: transparent;
 }
 .scroll::-webkit-scrollbar-thumb {
-  background: rgba(139,115,85,0.3);
-  border-radius: 999px;
+  background: var(--poke-border);
 }
