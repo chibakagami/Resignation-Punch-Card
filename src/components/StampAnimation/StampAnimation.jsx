@@ -5,25 +5,25 @@ import styles from './StampAnimation.module.css'
 
 const overlayVariants = {
   initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 0.05 } },
-  exit: { opacity: 0, transition: { duration: 0.2, delay: 0.35 } },
+  animate: { opacity: 1, transition: { duration: 0.06 } },
+  exit: { opacity: 0, transition: { duration: 0.2, delay: 0.3 } },
 }
 
 const stampVariants = {
-  initial: { y: -140, rotate: -18, scale: 0.7, opacity: 0 },
+  initial: { y: -160, rotate: -12, scale: 0.6, opacity: 0 },
   animate: {
-    y: 0, rotate: 2, scale: 1, opacity: 1,
-    transition: { type: 'spring', stiffness: 750, damping: 18, mass: 0.8 },
+    y: 0, rotate: 0, scale: 1, opacity: 1,
+    transition: { type: 'spring', stiffness: 700, damping: 16, mass: 0.9 },
   },
-  exit: { opacity: 0, scale: 0.9, transition: { duration: 0.15 } },
+  exit: { opacity: 0, scale: 0.95, transition: { duration: 0.12 } },
 }
 
 const inkVariants = {
   initial: { scale: 0, opacity: 0 },
   animate: {
-    scale: [0, 3],
-    opacity: [0.7, 0],
-    transition: { duration: 0.55, ease: 'easeOut', delay: 0.1 },
+    scale: [0, 3.2],
+    opacity: [0.8, 0],
+    transition: { duration: 0.5, ease: 'easeOut', delay: 0.08 },
   },
 }
 
@@ -58,6 +58,7 @@ export default function StampAnimation({ isPlaying, currentEvent, onComplete }) 
               animate="animate"
               exit="exit"
             >
+              <span className={styles.useText}>使用了技能！</span>
               <span className={styles.emoji}>{currentEvent.emoji}</span>
               <span className={styles.label}>{currentEvent.label}</span>
             </motion.div>

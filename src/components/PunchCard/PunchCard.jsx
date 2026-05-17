@@ -12,25 +12,14 @@ const PunchCard = forwardRef(function PunchCard(
 
   return (
     <div className={styles.card} ref={ref}>
-      <div className={styles.perfLeft} aria-hidden />
-      <div className={styles.perfRight} aria-hidden />
-
-      <div className={styles.cardInner}>
-        <div className={styles.header}>
-          <div className={styles.headerLeft}>
-            <span className={styles.cardTitle}>離職集點卡</span>
-            {(companyName || jobTitle) && (
-              <span className={styles.cardSub}>
-                {[companyName, jobTitle].filter(Boolean).join(' · ')}
-              </span>
-            )}
-          </div>
-          <div className={styles.headerRight}>
-            <span className={styles.pageNum}>第 {cardPage} 張</span>
-            <span className={styles.stampCount}>{totalStamps} 枚</span>
-          </div>
+      <div className={styles.topStripe}>
+        <span className={styles.cardTitle}>TRAINER CARD</span>
+        <div className={styles.cardMeta}>
+          <span className={styles.metaItem}>NO.{String(cardPage).padStart(2,'0')}</span>
+          <span className={styles.metaItem}>{stamps.length}/{SLOTS_PER_CARD}</span>
         </div>
-
+      </div>
+      <div className={styles.cardInner}>
         <div className={styles.grid}>
           {slots.map((stamp, i) => (
             <StampSlot
@@ -41,11 +30,14 @@ const PunchCard = forwardRef(function PunchCard(
             />
           ))}
         </div>
-
         <div className={styles.footer}>
-          <span className={styles.tagline}>用印章記錄每一個離職理由</span>
+          <span className={styles.tagline}>
+            {companyName || jobTitle
+              ? `${[companyName, jobTitle].filter(Boolean).join(' ')}`.substring(0, 18)
+              : 'RESIGN PUNCH CARD'}
+          </span>
           <span className={styles.progress}>
-            {stamps.length} / {SLOTS_PER_CARD}
+            {String(totalStamps).padStart(3, '0')} PTS
           </span>
         </div>
       </div>

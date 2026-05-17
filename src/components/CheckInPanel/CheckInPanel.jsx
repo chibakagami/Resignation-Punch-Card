@@ -6,24 +6,32 @@ export default function CheckInPanel({ streak, hasCheckedInToday, onCheckIn, dis
 
   return (
     <section className={styles.panel}>
-      <div className={styles.streakRow}>
-        <span className={styles.streakLabel}>🔥 連續打卡</span>
-        <span className={styles.streakNum}>{streak} 天</span>
-        {nextMilestone && (
-          <span className={styles.streakHint}>再 {remaining} 天解鎖成就</span>
+      <div className={styles.titleBar}>
+        <h2 className={styles.titleText}>▶ 每日存檔點</h2>
+      </div>
+      <div className={styles.body}>
+        <div className={styles.streakRow}>
+          <span className={styles.streakIcon}>🔥</span>
+          <div className={styles.streakInfo}>
+            <span className={styles.streakLabel}>STREAK</span>
+            <span className={styles.streakNum}>{String(streak).padStart(3,'0')} DAYS</span>
+          </div>
+          {nextMilestone && (
+            <span className={styles.streakHint}>▶ 再 {remaining} 天</span>
+          )}
+        </div>
+        <button
+          className={styles.btn}
+          onClick={onCheckIn}
+          disabled={hasCheckedInToday || disabled}
+          type="button"
+        >
+          {hasCheckedInToday ? '✅ TODAY SAVED' : '💾 SAVE PROGRESS'}
+        </button>
+        {hasCheckedInToday && (
+          <p className={styles.done}>明天再來繼續累積！</p>
         )}
       </div>
-      <button
-        className={styles.btn}
-        onClick={onCheckIn}
-        disabled={hasCheckedInToday || disabled}
-        type="button"
-      >
-        {hasCheckedInToday ? '✅ 今日已打卡' : '📅 每日打卡'}
-      </button>
-      {hasCheckedInToday && (
-        <p className={styles.done}>明天再來繼續累積！</p>
-      )}
     </section>
   )
 }
