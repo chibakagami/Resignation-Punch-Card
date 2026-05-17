@@ -26,6 +26,7 @@ const initialState = {
   lastCheckIn: null,
   streak: 0,
   unlockedAchievements: [],
+  achievementDates: {},   // { [achievementId]: 'YYYY-MM-DD' }
   newlyUnlocked: [],
 }
 
@@ -51,10 +52,13 @@ const usePunchCardStore = create(
           }
           const nextState = { ...state, stamps: newStamps, eventCountMap: newEventCountMap }
           const newlyUnlocked = checkNewAchievements(nextState, state.unlockedAchievements)
+          const today = todayStr()
+          const newDates = Object.fromEntries(newlyUnlocked.map(id => [id, today]))
           return {
             stamps: newStamps,
             eventCountMap: newEventCountMap,
             unlockedAchievements: [...state.unlockedAchievements, ...newlyUnlocked],
+            achievementDates: { ...state.achievementDates, ...newDates },
             newlyUnlocked: [...state.newlyUnlocked, ...newlyUnlocked],
           }
         })
@@ -79,11 +83,13 @@ const usePunchCardStore = create(
           const newStamps = [...st.stamps, newStamp]
           const nextState = { ...st, stamps: newStamps, streak: newStreak, lastCheckIn: today }
           const newlyUnlocked = checkNewAchievements(nextState, st.unlockedAchievements)
+          const newDates = Object.fromEntries(newlyUnlocked.map(id => [id, today]))
           return {
             stamps: newStamps,
             lastCheckIn: today,
             streak: newStreak,
             unlockedAchievements: [...st.unlockedAchievements, ...newlyUnlocked],
+            achievementDates: { ...st.achievementDates, ...newDates },
             newlyUnlocked: [...st.newlyUnlocked, ...newlyUnlocked],
           }
         })
@@ -107,9 +113,11 @@ const usePunchCardStore = create(
         set(state => {
           const nextState = { ...state, companyName, jobTitle, targetDate }
           const newlyUnlocked = checkNewAchievements(nextState, state.unlockedAchievements)
+          const newDates = Object.fromEntries(newlyUnlocked.map(id => [id, todayStr()]))
           return {
             companyName, jobTitle, targetDate,
             unlockedAchievements: [...state.unlockedAchievements, ...newlyUnlocked],
+            achievementDates: { ...state.achievementDates, ...newDates },
             newlyUnlocked: [...state.newlyUnlocked, ...newlyUnlocked],
           }
         })
@@ -164,6 +172,7 @@ const usePunchCardStore = create(
             note: s.note || '',
           }))
         }
+        base.achievementDates = base.achievementDates || {}
         return base
       },
     }

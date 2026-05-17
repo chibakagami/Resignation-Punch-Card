@@ -3,7 +3,7 @@ import { ACHIEVEMENTS } from '../../constants/achievements'
 import Badge from './Badge'
 import styles from './AchievementBadges.module.css'
 
-export default function AchievementBadges({ unlockedIds, newlyUnlocked, onClearNew }) {
+export default function AchievementBadges({ unlockedIds, newlyUnlocked, onClearNew, onBadgeClick }) {
   useEffect(() => {
     if (newlyUnlocked.length > 0) {
       const timer = setTimeout(onClearNew, 3000)
@@ -27,6 +27,7 @@ export default function AchievementBadges({ unlockedIds, newlyUnlocked, onClearN
             achievement={a}
             isUnlocked={unlockedIds.includes(a.id)}
             isNew={newlyUnlocked.includes(a.id)}
+            onClick={onBadgeClick}
           />
         ))}
       </div>

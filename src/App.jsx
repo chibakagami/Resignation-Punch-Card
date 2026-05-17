@@ -11,6 +11,7 @@ import StampAnimation from './components/StampAnimation/StampAnimation'
 import StampInputModal from './components/StampInputModal/StampInputModal'
 import StampDetailModal from './components/StampDetailModal/StampDetailModal'
 import CustomEventModal from './components/CustomEventModal/CustomEventModal'
+import BadgeDetailModal from './components/BadgeDetailModal/BadgeDetailModal'
 import SettingsModal from './components/SettingsModal/SettingsModal'
 import ShareButton from './components/ShareButton/ShareButton'
 import styles from './App.module.css'
@@ -22,12 +23,13 @@ export default function App() {
   const [detailStamp, setDetailStamp] = useState(null)
   const [customEventOpen, setCustomEventOpen] = useState(false)
   const [viewingPage, setViewingPage] = useState(1)
+  const [selectedBadge, setSelectedBadge] = useState(null)
 
   const {
     companyName, jobTitle, targetDate,
     stamps, eventCountMap, customEvents,
     lastCheckIn, streak,
-    unlockedAchievements, newlyUnlocked,
+    unlockedAchievements, achievementDates, newlyUnlocked,
     addEventStamp, addCheckIn,
     addCustomEvent, removeCustomEvent,
     updateProfile, clearNewAchievements,
@@ -71,6 +73,10 @@ export default function App() {
     addCustomEvent(emoji, label)
     setCustomEventOpen(false)
   }, [addCustomEvent])
+
+  const handleBadgeClick = useCallback((achievement) => {
+    setSelectedBadge(achievement)
+  }, [])
 
   const totalPages = getTotalPages()
   const stampsOnPage = getStampsOnPage(viewingPage)
@@ -123,6 +129,7 @@ export default function App() {
           unlockedIds={unlockedAchievements}
           newlyUnlocked={newlyUnlocked}
           onClearNew={clearNewAchievements}
+          onBadgeClick={handleBadgeClick}
         />
       </div>
 
@@ -148,6 +155,13 @@ export default function App() {
         isOpen={customEventOpen}
         onSave={handleAddCustomEvent}
         onCancel={() => setCustomEventOpen(false)}
+      />
+
+      <BadgeDetailModal
+        achievement={selectedBadge}
+        isUnlocked={selectedBadge ? unlockedAchievements.includes(selectedBadge.id) : false}
+        unlockedDate={selectedBadge ? achievementDates[selectedBadge.id] : null}
+        onClose={() => setSelectedBadge(null)}
       />
 
       <SettingsModal
