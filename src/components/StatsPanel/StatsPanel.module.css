@@ -1,0 +1,148 @@
+.panel {
+  background: var(--poke-panel);
+  border: 4px solid var(--poke-border);
+  box-shadow: inset 0 0 0 2px var(--poke-panel), inset 0 0 0 4px var(--poke-border);
+  overflow: hidden;
+  width: 100%;
+}
+
+.titleBar {
+  background: var(--poke-blue);
+  padding: 8px 14px;
+}
+
+.titleText {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: #fff;
+  letter-spacing: 0.08em;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.block {
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--poke-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.block:last-child { border-bottom: none; }
+
+.blockLabel {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--poke-text-muted);
+  letter-spacing: 0.06em;
+}
+
+.empty {
+  font-family: var(--font-zh);
+  font-size: 13px;
+  color: var(--poke-text-muted);
+  margin: 0;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rank {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--poke-text-muted);
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.topEmoji { font-size: 18px; line-height: 1; flex-shrink: 0; }
+
+.topLabel {
+  font-family: var(--font-zh);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--poke-text);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topCount {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--poke-red);
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+}
+
+.rateRow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.rateNum {
+  font-family: var(--font-pixel);
+  font-size: 28px;
+  color: var(--poke-green);
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+.rateSub {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--poke-text-muted);
+  letter-spacing: 0.04em;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 10px;
+  background: #d8d8d8;
+  border: 2px solid var(--poke-border);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--poke-green);
+  transition: width 0.5s ease;
+}
+
+.countdownRow {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.countdownNum {
+  font-family: var(--font-pixel);
+  font-size: 28px;
+  color: var(--poke-red);
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+.countdownUnit {
+  font-family: var(--font-zh);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--poke-text);
+}
+
+.countdownDone {
+  font-family: var(--font-zh);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--poke-green);
+}

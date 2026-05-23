@@ -1,8 +1,8 @@
 import { useShareCard } from '../../hooks/useShareCard'
 import styles from './ShareButton.module.css'
 
-export default function ShareButton({ cardRef }) {
-  const { share, isCapturing } = useShareCard(cardRef)
+export default function ShareButton({ cardRef, companyName, stampsLength, targetDate }) {
+  const { share, isCapturing } = useShareCard(cardRef, { companyName, stampsLength, targetDate })
 
   return (
     <button

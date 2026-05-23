@@ -14,6 +14,7 @@ import CustomEventModal from './components/CustomEventModal/CustomEventModal'
 import BadgeDetailModal from './components/BadgeDetailModal/BadgeDetailModal'
 import SettingsModal from './components/SettingsModal/SettingsModal'
 import OnboardingModal from './components/OnboardingModal/OnboardingModal'
+import StatsPanel from './components/StatsPanel/StatsPanel'
 import ShareButton from './components/ShareButton/ShareButton'
 import styles from './App.module.css'
 
@@ -71,8 +72,8 @@ export default function App() {
     setDetailStamp(stamp)
   }, [])
 
-  const handleAddCustomEvent = useCallback((emoji, label) => {
-    addCustomEvent(emoji, label)
+  const handleAddCustomEvent = useCallback((emoji, label, color) => {
+    addCustomEvent(emoji, label, color)
     setCustomEventOpen(false)
   }, [addCustomEvent])
 
@@ -113,7 +114,12 @@ export default function App() {
           customEvents={customEvents}
         />
 
-        <ShareButton cardRef={cardRef} />
+        <ShareButton
+          cardRef={cardRef}
+          companyName={companyName}
+          stampsLength={stamps.length}
+          targetDate={targetDate}
+        />
 
         <CheckInPanel
           streak={streak}
@@ -136,6 +142,14 @@ export default function App() {
           newlyUnlocked={newlyUnlocked}
           onClearNew={clearNewAchievements}
           onBadgeClick={handleBadgeClick}
+        />
+
+        <StatsPanel
+          stamps={stamps}
+          eventCountMap={eventCountMap}
+          customEvents={customEvents}
+          streak={streak}
+          targetDate={targetDate}
         />
       </div>
 
