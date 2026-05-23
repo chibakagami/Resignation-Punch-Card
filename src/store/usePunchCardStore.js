@@ -28,6 +28,7 @@ const initialState = {
   unlockedAchievements: [],
   achievementDates: {},   // { [achievementId]: 'YYYY-MM-DD' }
   newlyUnlocked: [],
+  hasOnboarded: false,
 }
 
 const usePunchCardStore = create(
@@ -127,6 +128,21 @@ const usePunchCardStore = create(
         set({ newlyUnlocked: [] })
       },
 
+      completeOnboarding(companyName, jobTitle, targetDate) {
+        set(state => {
+          const nextState = { ...state, companyName, jobTitle, targetDate, hasOnboarded: true }
+          const newlyUnlocked = checkNewAchievements(nextState, state.unlockedAchievements)
+          const newDates = Object.fromEntries(newlyUnlocked.map(id => [id, todayStr()]))
+          return {
+            companyName, jobTitle, targetDate,
+            hasOnboarded: true,
+            unlockedAchievements: [...state.unlockedAchievements, ...newlyUnlocked],
+            achievementDates: { ...state.achievementDates, ...newDates },
+            newlyUnlocked: [...state.newlyUnlocked, ...newlyUnlocked],
+          }
+        })
+      },
+
       resetAllData() {
         set({ ...initialState })
       },
@@ -161,7 +177,7 @@ const usePunchCardStore = create(
     }),
     {
       name: 'punch-card-v1',
-      version: 2,
+      version: 3,
       migrate: (persistedState, version) => {
         const base = { ...initialState, ...persistedState }
         if (version < 2) {
@@ -173,6 +189,10 @@ const usePunchCardStore = create(
           }))
         }
         base.achievementDates = base.achievementDates || {}
+        // existing users (version < 3) are considered already onboarded
+        if (version < 3) {
+          base.hasOnboarded = !!(base.companyName || base.stamps?.length > 0)
+        }
         return base
       },
     }

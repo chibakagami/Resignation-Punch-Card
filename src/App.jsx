@@ -13,6 +13,7 @@ import StampDetailModal from './components/StampDetailModal/StampDetailModal'
 import CustomEventModal from './components/CustomEventModal/CustomEventModal'
 import BadgeDetailModal from './components/BadgeDetailModal/BadgeDetailModal'
 import SettingsModal from './components/SettingsModal/SettingsModal'
+import OnboardingModal from './components/OnboardingModal/OnboardingModal'
 import ShareButton from './components/ShareButton/ShareButton'
 import styles from './App.module.css'
 
@@ -30,9 +31,10 @@ export default function App() {
     stamps, eventCountMap, customEvents,
     lastCheckIn, streak,
     unlockedAchievements, achievementDates, newlyUnlocked,
+    hasOnboarded,
     addEventStamp, addCheckIn,
     addCustomEvent, removeCustomEvent,
-    updateProfile, clearNewAchievements,
+    updateProfile, completeOnboarding, clearNewAchievements,
     resetAllData, checkStreakOnLoad,
     getTotalPages, getStampsOnPage, getCurrentPage,
   } = usePunchCardStore()
@@ -84,6 +86,10 @@ export default function App() {
 
   return (
     <div className={styles.app}>
+      {!hasOnboarded && (
+        <OnboardingModal onComplete={completeOnboarding} />
+      )}
+
       <div className={styles.container}>
         <AppHeader
           companyName={companyName}
