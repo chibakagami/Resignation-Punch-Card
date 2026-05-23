@@ -96,10 +96,10 @@ const usePunchCardStore = create(
         })
       },
 
-      addCustomEvent(emoji, label) {
+      addCustomEvent(emoji, label, color) {
         const id = `custom_${nanoid(6)}`
         set(state => ({
-          customEvents: [...state.customEvents, { id, emoji, label, color: '#888888' }],
+          customEvents: [...state.customEvents, { id, emoji, label, color: color || '#888888' }],
         }))
         return id
       },
