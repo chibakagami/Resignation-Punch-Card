@@ -156,3 +156,17 @@
 .saveBtn:hover:not(:disabled) { background: #8848ff; }
 .saveBtn:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--poke-border); }
 .saveBtn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+.colorSection { display: flex; flex-direction: column; gap: 8px; }
+.colorGrid { display: flex; gap: 6px; flex-wrap: wrap; }
+.colorBtn {
+  width: 28px;
+  height: 28px;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: transform 0.1s, border-color 0.1s;
+  border-radius: 2px;
+}
+.colorBtn:hover { transform: scale(1.15); }
+.colorSelected { border-color: var(--poke-border) !important; box-shadow: 0 0 0 2px #fff inset; }
+.previewColor { width: 20px; height: 20px; border: 2px solid var(--poke-border); flex-shrink: 0; border-radius: 2px; }

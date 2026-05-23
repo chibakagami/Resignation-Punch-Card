@@ -59,6 +59,11 @@ export const EVENTS = [
     label: '黑鍋從天而降',
     color: '#C0392B',
   },
+  { id: 'after_hours_message', emoji: '📱', label: '下班後被 Line', color: '#27AE60' },
+  { id: 'salary_freeze', emoji: '💸', label: '薪水凍漲', color: '#F39C12' },
+  { id: 'mandatory_training', emoji: '🖨️', label: '被迫上教育訓練', color: '#7F8C8D' },
+  { id: 'endless_reports', emoji: '📋', label: '開不完的週報', color: '#2980B9' },
+  { id: 'fake_hr_chat', emoji: '🤝', label: '假裝開心的 HR 面談', color: '#E91E63' },
 ]
 
 export const EVENT_MAP = Object.fromEntries(EVENTS.map(e => [e.id, e]))

@@ -4,16 +4,20 @@ import styles from './CustomEventModal.module.css'
 
 const PRESET_EMOJIS = ['😤','🤬','💢','😭','😩','😫','🥵','🤯','💀','🫠','😱','🙄','😒','😞','😔']
 
+const PRESET_COLORS = ['#E74C3C','#8E44AD','#2980B9','#27AE60','#F39C12','#16A085','#E91E63','#795548']
+
 export default function CustomEventModal({ isOpen, onSave, onCancel }) {
   const [emoji, setEmoji] = useState('')
   const [label, setLabel] = useState('')
+  const [color, setColor] = useState('#E74C3C')
 
   function handleSave(e) {
     e.preventDefault()
     if (!emoji.trim() || !label.trim()) return
-    onSave(emoji.trim(), label.trim())
+    onSave(emoji.trim(), label.trim(), color)
     setEmoji('')
     setLabel('')
+    setColor('#E74C3C')
   }
 
   return (
@@ -62,6 +66,22 @@ export default function CustomEventModal({ isOpen, onSave, onCancel }) {
                 />
               </div>
 
+              <div className={styles.colorSection}>
+                <label className={styles.fieldLabel}>選擇顏色</label>
+                <div className={styles.colorGrid}>
+                  {PRESET_COLORS.map(c => (
+                    <button
+                      key={c}
+                      type="button"
+                      className={`${styles.colorBtn} ${color === c ? styles.colorSelected : ''}`}
+                      style={{ background: c }}
+                      onClick={() => setColor(c)}
+                      aria-label={c}
+                    />
+                  ))}
+                </div>
+              </div>
+
               <label className={styles.fieldLabel}>
                 技能名稱
                 <input
@@ -79,6 +99,7 @@ export default function CustomEventModal({ isOpen, onSave, onCancel }) {
                 <div className={styles.preview}>
                   <span className={styles.previewEmoji}>{emoji}</span>
                   <span className={styles.previewLabel}>{label}</span>
+                  <div className={styles.previewColor} style={{ background: color }} />
                 </div>
               )}
 

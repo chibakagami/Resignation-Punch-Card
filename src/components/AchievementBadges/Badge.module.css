@@ -96,3 +96,31 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+.rarity_common {}
+
+.rarity_rare {
+  border-color: var(--poke-blue);
+  box-shadow: 2px 2px 0 #1060b0, 0 0 10px rgba(26,96,216,0.3);
+}
+.rarity_rare .badgeIcon {
+  background: radial-gradient(circle, #e8f4ff 0%, #90c8ff 100%);
+  border-color: #1060b0;
+  box-shadow: 0 0 8px rgba(26,96,216,0.5), inset 0 1px 2px rgba(255,255,255,0.8);
+}
+
+.rarity_legendary {
+  border-color: #a000c0;
+  box-shadow: 2px 2px 0 #600080, 0 0 14px rgba(160,0,192,0.4);
+  animation: legendaryGlow 2s ease-in-out infinite;
+}
+.rarity_legendary .badgeIcon {
+  background: radial-gradient(circle, #ffe8ff 0%, #e080ff 100%);
+  border-color: #800090;
+  box-shadow: 0 0 12px rgba(160,0,192,0.6), inset 0 1px 2px rgba(255,255,255,0.8);
+}
+
+@keyframes legendaryGlow {
+  0%, 100% { box-shadow: 2px 2px 0 #600080, 0 0 8px rgba(160,0,192,0.3); }
+  50% { box-shadow: 2px 2px 0 #600080, 0 0 20px rgba(160,0,192,0.7); }
+}

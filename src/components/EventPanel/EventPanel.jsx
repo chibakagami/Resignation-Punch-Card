@@ -8,7 +8,7 @@ export default function EventPanel({ eventCountMap, customEvents, onStamp, onAdd
   return (
     <section className={styles.panel}>
       <div className={styles.titleBar}>
-        <h2 className={styles.title}>▶ 選擇苦水技能！</h2>
+        <h2 className={styles.title}>▶ 今天又被整了什麼？</h2>
       </div>
       <div className={styles.grid}>
         {allEvents.map(event => (

@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './BadgeDetailModal.module.css'
+import usePunchCardStore from '../../store/usePunchCardStore'
 
 function formatDate(dateStr) {
   if (!dateStr) return ''
@@ -8,6 +9,10 @@ function formatDate(dateStr) {
 }
 
 export default function BadgeDetailModal({ achievement, isUnlocked, unlockedDate, onClose }) {
+  const { stamps, eventCountMap, streak, targetDate } = usePunchCardStore(
+    s => ({ stamps: s.stamps, eventCountMap: s.eventCountMap, streak: s.streak, targetDate: s.targetDate })
+  )
+
   if (!achievement) return null
 
   return (
@@ -52,9 +57,25 @@ export default function BadgeDetailModal({ achievement, isUnlocked, unlockedDate
                 </div>
               )}
 
+              {!isUnlocked && achievement.progress && (() => {
+                const { current, max } = achievement.progress({ stamps, eventCountMap, streak, targetDate })
+                const pct = max > 0 ? Math.min(100, (current / max) * 100) : 0
+                return (
+                  <div className={styles.progressBox}>
+                    <div className={styles.progressHeader}>
+                      <span className={styles.progressLabel}>PROGRESS</span>
+                      <span className={styles.progressVal}>{current} / {max}</span>
+                    </div>
+                    <div className={styles.progressTrack}>
+                      <div className={styles.progressFill} style={{ width: `${pct}%` }} />
+                    </div>
+                  </div>
+                )
+              })()}
+
               {!isUnlocked && (
                 <div className={styles.lockedNote}>
-                  繼續努力，你做得到！
+                  加油！你比公司值錢
                 </div>
               )}
             </div>

@@ -7,7 +7,7 @@ export default function CheckInPanel({ streak, hasCheckedInToday, onCheckIn, dis
   return (
     <section className={styles.panel}>
       <div className={styles.titleBar}>
-        <h2 className={styles.titleText}>▶ 每日存檔點</h2>
+        <h2 className={styles.titleText}>▶ 每日存活確認</h2>
       </div>
       <div className={styles.body}>
         <div className={styles.streakRow}>
@@ -30,6 +30,9 @@ export default function CheckInPanel({ streak, hasCheckedInToday, onCheckIn, dis
         </button>
         {hasCheckedInToday && (
           <p className={styles.done}>明天再來繼續累積！</p>
+        )}
+        {!hasCheckedInToday && (
+          <p className={styles.streakRule}>連續每天打卡才能累積，中斷一天歸零</p>
         )}
       </div>
     </section>

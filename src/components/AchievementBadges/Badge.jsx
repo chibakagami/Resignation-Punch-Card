@@ -4,7 +4,7 @@ import styles from './Badge.module.css'
 export default function Badge({ achievement, isUnlocked, isNew, onClick }) {
   return (
     <motion.div
-      className={`${styles.badge} ${isUnlocked ? styles.unlocked : styles.locked}`}
+      className={`${styles.badge} ${isUnlocked ? styles.unlocked : styles.locked} ${isUnlocked ? styles[`rarity_${achievement.rarity}`] : ''}`}
       animate={isNew ? { scale: [0.5, 1.25, 1.0], rotate: [0, -5, 5, 0] } : {}}
       transition={isNew ? { duration: 0.5, times: [0, 0.6, 0.8, 1] } : {}}
       onClick={() => onClick?.(achievement)}
